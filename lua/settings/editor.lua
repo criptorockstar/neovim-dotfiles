@@ -6,13 +6,30 @@ opt.showmode = false
 
 opt.clipboard = "unnamedplus"
 opt.cursorline = true
+opt.conceallevel = 0
+vim.scriptencoding = "UTF-8"
+opt.showcmd = true
+opt.shell = "zsh"
+opt.backspace = "start,eol,indent"
+opt.path:append { '**' }
+opt.wildignore:append { '*/node_modules/*' }
+opt.formatoptions:append { 'r' }
+opt.winblend = 0
+opt.wildoptions = 'pum'
+opt.pumblend = 5
+opt.background = 'dark'
 
 -- Indenting
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 opt.tabstop = 2
+opt.showtabline = 2
 opt.softtabstop = 2
+opt.breakindent = true
+opt.ai = true
+opt.si = true
+opt.wrap = false
 
 opt.fillchars = { eob = " " }
 opt.ignorecase = true
@@ -22,7 +39,7 @@ opt.mouse = "a"
 -- Numbers
 opt.number = true
 opt.relativenumber = true
-opt.numberwidth = 2
+opt.numberwidth = 4
 opt.ruler = false
 opt.cmdheight = 1
 opt.scrolloff = 10
@@ -50,3 +67,4 @@ opt.errorbells = false
 opt.swapfile = false
 opt.backup = false
 opt.encoding = "UTF-8"
+opt.fileencoding = "UTF-8"

@@ -39,16 +39,22 @@ map("n", "<C-u>", "<C-u>zz", options(" Scroll up"))
 -- NvimTree
 map("n", "<C-b>", ":NvimTreeToggle<CR>", options("󰔱 Toggle nvimtree"))
 
--- Pane navigation
+-- Move Window
+map("n", "<Space>", "<C-w>w", options("󰆾 Move")) 
 map("n", "<C-h>", "<C-w>h", options("󰜲 Navigate left"))
 map("n", "<C-l>", "<C-w>l", options("󰜵 Navigate right"))
 map("n", "<C-k>", "<C-w>k", options("󰜸 Navigate up"))
 map("n", "<C-j>", "<C-w>j", options("󰜯 Navigate down"))
 
--- Window managment
-map("n", "<leader><leader>v", ":vsplit<CR>", options("󰤼 Vertical Split"))
-map("n", "<leader><leader>h", ":split<CR>", options("󰤻 Horizontal Split"))
-map("n", "<leader><leader>m", ":MaximizerToggle<CR>", options("󰯌 Toggle minimize"))
+-- Split Window
+map("n", "ss", ":split<Return><C-w>w", options("󰤻 Horizontal Split"))
+map("n", "sv", ":vsplit<Return><C-w>w", options("󰤼 Vertical Split"))
+
+-- Resize Window
+map("n", "<C-w><left>", "<C-w><", options("󰡎 Increase width"))
+map("n", "<C-w><right>", "<C-w>>", options("󰡌 Decrease width"))
+map("n", "<C-w><up>", "<C-w>+", options("󰡏 Increase height"))
+map("n", "<C-w><down>", "<C-w>-", options("󰡍 Decrease height"))
 
 -- Telescope
 map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", options(" Find keymaps"))

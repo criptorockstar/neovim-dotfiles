@@ -6,10 +6,17 @@ return {
   build = ":TSUpdate",
   event = "VeryLazy",
   main = "nvim-treesitter.configs",
-  opts = {
+  pts = {
     ensure_installed = {
       "lua",
       "luadoc",
+      "tsx",
+      "json",
+      "css",
+      "kotlin",
+    },
+    autotag = {
+      enable = true,
     },
     hightlight = {
       enable = true,
