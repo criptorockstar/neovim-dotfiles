@@ -20,11 +20,11 @@ opt.pumblend = 5
 opt.background = 'dark'
 
 -- Indenting
+-- opt.showtabline = 2
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 opt.tabstop = 2
-opt.showtabline = 2
 opt.softtabstop = 2
 opt.breakindent = true
 opt.ai = true

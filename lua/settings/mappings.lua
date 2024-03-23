@@ -67,8 +67,8 @@ map("n", "<A-/>", ':execute "normal gcc"<CR>', options("  Toggle comment"))
 map("x", "<A-/>", ':<C-u>execute "normal gv"<bar>execute "normal gcc"<CR>', options("  Toggle comment (visual)"))
 
 -- Tabs
-map("n", "<Tab>", "<cmd>BufferNext<CR>", options(" Next Tab"))
-map("n", "<S-Tab>", "<cmd>BufferPrevious<CR>", options(" Prev Tab"))
-map("n", "<C-x>", "<cmd>BufferClose<CR>", options(" Close Tab"))
+map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", options(" Next Tab"))
+map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", options(" Prev Tab"))
+map("n", "<C-x>", "<cmd>Bdelete<CR>", options(" Close Tab")) -- buffer %d
 
 return M
