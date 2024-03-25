@@ -1,12 +1,23 @@
 local opt = vim.opt
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
+
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = false,
+})
+
+vim.o.signcolumn = "yes:2"
+vim.lsp.diagnostic.enable = true
 
 ----- globals -----
 opt.laststatus = 3
@@ -19,13 +30,13 @@ vim.scriptencoding = "UTF-8"
 opt.showcmd = true
 opt.shell = "zsh"
 opt.backspace = "start,eol,indent"
-opt.path:append { '**' }
-opt.wildignore:append { '*/node_modules/*' }
-opt.formatoptions:append { 'r' }
+opt.path:append({ "**" })
+opt.wildignore:append({ "*/node_modules/*" })
+opt.formatoptions:append({ "r" })
 opt.winblend = 0
-opt.wildoptions = 'pum'
+opt.wildoptions = "pum"
 opt.pumblend = 5
-opt.background = 'dark'
+opt.background = "dark"
 
 -- Indenting
 -- opt.showtabline = 2

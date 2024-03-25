@@ -2,7 +2,7 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 local function options(desc)
-    return vim.tbl_extend('force', opts, { desc = desc })
+	return vim.tbl_extend("force", opts, { desc = desc })
 end
 
 local M = {}
@@ -73,9 +73,8 @@ map("n", "<C-x>", "<cmd>Bdelete<CR>", options(" Close Tab"))
 
 -- LspSaga
 map("n", "<leader>jd", "<cmd>LspSaga diagnostic_jump_next<CR>", options("Jump next"))
-map("n", "K", "<cmd>LspSaga hover_doc<CR>", options("Hover"))
 map("n", "<leader>gd", "<cmd>LspSaga lsp_finder<CR>", options("Lsp finder"))
-map("n", "<leader>k", "<cmd>LspSaga signature_help<CR>", options("LSP Signature help"))
+map("n", "<leader>h", "<cmd>LspSaga signature_help<CR>", options("LSP Signature help"))
 map("n", "<leader>gp", "<cmd>LspSaga preview_definition<CR>", options("LSP Preview definition"))
 map("n", "<leader>gr", "<cmd>LspSaga rename<CR>", options("LSP Rename"))
 
