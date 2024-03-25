@@ -5,9 +5,7 @@ return {
     "windwp/nvim-ts-autotag",
   },
   config = function()
-    local autopairs = require("nvim-autopairs")
-
-    autopairs.setup({
+    require("nvim-autopairs").setup({
       disable_filetype = { 'TelescopePrompt', 'vim' }
     })
   end,

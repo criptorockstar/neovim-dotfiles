@@ -40,7 +40,7 @@ map("n", "<C-u>", "<C-u>zz", options(" Scroll up"))
 map("n", "<C-b>", ":NvimTreeToggle<CR>", options("󰔱 Toggle nvimtree"))
 
 -- Move Window
-map("n", "<Space>", "<C-w>w", options("󰆾 Move")) 
+map("n", "<Space>", "<C-w>w", options("󰆾 Move"))
 map("n", "<C-h>", "<C-w>h", options("󰜲 Navigate left"))
 map("n", "<C-l>", "<C-w>l", options("󰜵 Navigate right"))
 map("n", "<C-k>", "<C-w>k", options("󰜸 Navigate up"))
@@ -69,6 +69,14 @@ map("x", "<A-/>", ':<C-u>execute "normal gv"<bar>execute "normal gcc"<CR>', opti
 -- Tabs
 map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", options(" Next Tab"))
 map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", options(" Prev Tab"))
-map("n", "<C-x>", "<cmd>Bdelete<CR>", options(" Close Tab")) -- buffer %d
+map("n", "<C-x>", "<cmd>Bdelete<CR>", options(" Close Tab"))
+
+-- LspSaga
+map("n", "<leader>jd", "<cmd>LspSaga diagnostic_jump_next<CR>", options("Jump next"))
+map("n", "K", "<cmd>LspSaga hover_doc<CR>", options("Hover"))
+map("n", "<leader>gd", "<cmd>LspSaga lsp_finder<CR>", options("Lsp finder"))
+map("n", "<leader>k", "<cmd>LspSaga signature_help<CR>", options("LSP Signature help"))
+map("n", "<leader>gp", "<cmd>LspSaga preview_definition<CR>", options("LSP Preview definition"))
+map("n", "<leader>gr", "<cmd>LspSaga rename<CR>", options("LSP Rename"))
 
 return M

@@ -21,8 +21,10 @@ return {
       extensions = {
         file_browser = {
           theme = 'dropdown',
-          -- disable netrw add use telescope-file-browser instead
           hijack_netrw = true,
+          ['ui-select'] = {
+            require('telescope.themes').get_dropdown(),
+          },
           mappings = {
             ["i"] = {
               ["<C-w>"] = function() vim.cmd("normal vbd") end,
@@ -38,5 +40,7 @@ return {
         }
       }
     })
+    pcall(require('telescope').load_extension, 'fzf')
+    pcall(require('telescope').load_extension, 'ui-select')
   end,
 }
