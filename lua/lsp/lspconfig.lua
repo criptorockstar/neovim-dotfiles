@@ -34,6 +34,13 @@ return {
 			cmd = { "typescript-language-server", "--stdio" },
 		})
 
+		lspconfig.kotlin_language_server.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			filetypes = { "kotlin" },
+			cmd = { "kotlin-language-server", "--stdio" },
+		})
+
 		-- Lua
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,

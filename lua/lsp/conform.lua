@@ -19,7 +19,6 @@ return {
 				graphql = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				kotlin = { "ktlin" },
 				ruby = { "standardrb" },
 			},
 			format_on_save = {
