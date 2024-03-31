@@ -3,11 +3,11 @@ local opt = vim.opt -- global opt variable
 ----- globals -----
 vim.lsp.diagnostic.enable = true -- enables LSP diagnostics
 opt.laststatus = 3 -- stores the last displayed status line content
-opt.showmode = false -- toggles showing whitespace characters 
+opt.showmode = false -- toggles showing whitespace characters
 opt.formatoptions:append({ "r" }) -- includes "readonly" mode
 opt.clipboard = "unnamedplus" -- sets the clipboard mode
 opt.cursorline = true -- enables highlighting the current line
-opt.conceallevel = 0 -- hides special characters (0 is show all) 
+opt.conceallevel = 0 -- hides special characters (0 is show all)
 vim.scriptencoding = "UTF-8" -- set default encoding to UTF-8
 opt.backspace = "start,eol,indent" -- configures how backspace works
 opt.winblend = 0 -- enables transpacery (0 is disable)
@@ -17,15 +17,15 @@ opt.completeopt = "menuone,noinsert,noselect" -- comma-separated list of options
 opt.termguicolors = true -- enables 24-bit RGB color
 opt.timeoutlen = 400 -- title of the window will be set to the value of 'titlestring'
 opt.scrolloff = 10 -- minimal number of screen lines to keep above and below the cursor
-opt.mouse = "a" -- enables mouse support 
+opt.mouse = "a" -- enables mouse support
 opt.mouseshape = "s:udsizing,m:no" -- change arrow over the status lines
 opt.bufhidden = "wipe" -- specifies what happens when a buffer is no longer displayed
 ---- Command ----
 opt.shell = "zsh" -- specifies the default shell for commands
-opt.cmdheight = 1 -- number of screen lines to use for the command-line 
+opt.cmdheight = 1 -- number of screen lines to use for the command-line
 opt.showcmd = true -- enables display of command characters
 opt.splitright = true -- commands listed below move the cursor to the firs non-blank of the line
-opt.splitbelow = true  -- splitting a window will put the new window below the current one.
+opt.splitbelow = true -- splitting a window will put the new window below the current one.
 opt.shortmess:append("sI") -- helps to avoid all the hit-enter prompts caused by file messages
 ---- Completion ----
 opt.wildoptions = "pum" -- sets options for wildcard completion behavior
@@ -46,7 +46,7 @@ opt.softtabstop = 2 -- number of spaces that a <Tab> counts for while performing
 opt.breakindent = true -- enable identing same amount of space as the beginning of that line
 opt.autoindent = true -- copy indent from current line when starting a new line
 opt.wrap = true -- changes how overflowing text is displayed
----- Numbers ---- 
+---- Numbers ----
 opt.number = true -- print the line number in front of each line
 opt.relativenumber = true -- set relative line numbers
 opt.numberwidth = 4 -- minimal number of columns to use for the line number
@@ -60,7 +60,7 @@ opt.errorbells = false -- ring the bell (beep or screen flash) for error message
 opt.swapfile = false -- use a swapfile for the buffer
 opt.backup = false -- make a backup before overwriting a file
 -- UFO
---vim.o.foldenable = true -- switch between showing all text unfolded and viewing the text with folds
---vim.o.foldcolumn = "1" -- resize to accommodate multiple folds up to the selected level
---vim.o.foldlevel = 99 -- sets the fold level see: https://neovim.io/doc/user/options.html#'foldlevel'
---vim.o.foldlevelstart = 99 -- sets 'foldlevel' when starting to edit another buffer
+--vim.opt.foldenable = false -- switch between showing all text unfolded and viewing the text with folds
+--vim.opt.foldcolumn = "1" -- resize to accommodate multiple folds up to the selected level
+--vim.opt.foldlevel = 99 -- sets the fold level see: https://neovim.io/doc/user/options.html#'foldlevel'
+--vim.opt.foldlevelstart = 99 -- sets 'foldlevel' when starting to edit another buffer
