@@ -1,11 +1,8 @@
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
 local function options(desc)
-	return vim.tbl_extend("force", opts, { desc = desc })
+	return vim.tbl_extend("force", { noremap = true, silent = true }, { desc = desc })
 end
-
-local M = {}
 
 -- leader
 vim.g.mapleader = "\\"
@@ -47,8 +44,10 @@ map("n", "<C-k>", "<C-w>k", options("󰜸 Navigate up"))
 map("n", "<C-j>", "<C-w>j", options("󰜯 Navigate down"))
 
 -- Split Window
-map("n", "ss", ":split<Return><C-w>w", options("󰤻 Horizontal Split"))
-map("n", "sv", ":vsplit<Return><C-w>w", options("󰤼 Vertical Split"))
+map("n", "<leader>sh", ":split<Return><C-w>w", options("󰤻 Horizontal Split"))
+map("n", "<leader>sv", ":vsplit<Return><C-w>w", options("󰤼 Vertical Split"))
+map("n", "<leader>se", "<C-w>=", options(" Make split equal width"))
+map("n", "<leader>sx", ":close<CR>", options(" Close current split"))
 
 -- Resize Window
 map("n", "<C-w><left>", "<C-w><", options("󰡎 Increase width"))
@@ -57,10 +56,11 @@ map("n", "<C-w><up>", "<C-w>+", options("󰡏 Increase height"))
 map("n", "<C-w><down>", "<C-w>-", options("󰡍 Decrease height"))
 
 -- Telescope
-map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", options(" Find keymaps"))
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", options("󱘟 Find file"))
-map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", options(" Live grep"))
-map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", options(" Buffers"))
+map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", options(" Live grep"))
+map("n", "<leader>fc", "<cmd>Telescope buffers<cr>", options(" Buffers"))
+map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", options(" Find keymaps"))
+map("n", "<leader>fk", "<cmd>Telescope help_tags<cr>", options("󰋗 Help tags"))
 
 -- Comment
 map("n", "<A-/>", ':execute "normal gcc"<CR>', options("  Toggle comment"))
@@ -71,11 +71,14 @@ map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", options(" Next Tab"))
 map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", options(" Prev Tab"))
 map("n", "<C-x>", "<cmd>Bdelete<CR>", options(" Close Tab"))
 
--- LspSaga
-map("n", "<leader>jd", "<cmd>LspSaga diagnostic_jump_next<CR>", options("Jump next"))
-map("n", "<leader>gd", "<cmd>LspSaga lsp_finder<CR>", options("Lsp finder"))
-map("n", "<leader>h", "<cmd>LspSaga signature_help<CR>", options("LSP Signature help"))
-map("n", "<leader>gp", "<cmd>LspSaga preview_definition<CR>", options("LSP Preview definition"))
-map("n", "<leader>gr", "<cmd>LspSaga rename<CR>", options("LSP Rename"))
+-- Runner
+map("n", "<leader>rc", ":RunCode<CR>", options(" Run code"))
+map("n", "<leader>rp", ":RunProject<CR>", options(" Run project"))
+map("n", "<leader>rf", ":RunFile<CR>", options("󱧻 Run file"))
+map("n", "<leader>rx", ":RunClose<CR>", options(" Run close"))
 
-return M
+-- LSP
+map("n", "<leader>e", vim.diagnostic.open_float, options(" Open diagnostics"))
+map("n", "[d", vim.diagnostic.goto_prev, options(" Go to prev"))
+map("n", "]d", vim.diagnostic.goto_next, options(" Go to next"))
+map("n", "<leader>q", vim.diagnostic.setloclist, options(" Close diagnostic"))

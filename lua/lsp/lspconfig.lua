@@ -1,93 +1,67 @@
-return {
-	"neovim/nvim-lspconfig",
+local M = {
+  "neovim/nvim-lspconfig",
+	lazy = false,
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-	},
-	lazy = false,
-	config = function()
-		local lspconfig = require("lspconfig")
-
-		local signs = { Error = "󰃤 ", Warn = " ", Hint = " ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
-
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
-		local on_attach = function(client, _) --bufnr
-			-- formatting
-			if client.server.capabilities.documentFormattingProvider then
-				vim.api.nvim_command([[augroup Format]])
-				vim.api.nvim_command([[autocmd! * <buffer>]])
-				vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]])
-				vim.api.nvim_command([[augroup END]])
-			end
-		end
-
-		-- Typescript
-		lspconfig.tsserver.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-			cmd = { "typescript-language-server", "--stdio" },
-		})
-
-		lspconfig.kotlin_language_server.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			filetypes = { "kotlin" },
-			cmd = { "kotlin-language-server", "--stdio" },
-		})
-
-		-- Lua
-		lspconfig.lua_ls.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-					hint = {
-						enable = true,
-					},
-					telemetry = {
-						enable = false,
-					},
-					workspace = {
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.expand("$vimruntime/lua/vim/lsp")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
-						},
-						checkThirdParty = false,
-					},
-				},
-			},
-		})
-
-		function PrintDiagnostics(opts, bufnr, line_nr, _)
-			bufnr = bufnr or 0
-			line_nr = line_nr or (vim.api.nvim_win_get_cursor(0)[1] - 1)
-			opts = opts or { ["lnum"] = line_nr }
-
-			local line_diagnostics = vim.diagnostic.get(bufnr, opts)
-			if vim.tbl_isempty(line_diagnostics) then
-				return
-			end
-
-			local diagnostic_message = ""
-			for i, diagnostic in ipairs(line_diagnostics) do
-				diagnostic_message = diagnostic_message .. string.format("%d: %s", i, diagnostic.message or "")
-				print(diagnostic_message)
-				if i ~= #line_diagnostics then
-					diagnostic_message = diagnostic_message .. "\n"
-				end
-			end
-			vim.api.nvim_echo({ { diagnostic_message, "Normal" } }, false, {})
-		end
-		vim.cmd([[ autocmd! CursorHold * lua PrintDiagnostics() ]])
-	end,
+		"williamboman/mason.nvim",
+		"folke/neodev.nvim",
+	}
 }
+
+M.capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+M.on_attach = function(client, bufnr)
+    -- keymap function
+    local function keymap(mode, lhs, rhs, desc)
+        local opts = { noremap = true, silent = true, buffer = bufnr, desc = desc }
+        vim.keymap.set(mode, lhs, rhs, opts)
+    end
+
+    -- keymaps
+    keymap("n", "<leader>gg", "<cmd>Lspsaga lsp_finder<CR>", " LSP finder")
+    keymap("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", " Go to declaration")
+    keymap("n", "<leader>gd", "<cmd>Lspsaga peek_definition<CR>", "󰆧 Go to definition")
+    keymap("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", "󰡱 Go to implementation")
+    keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", " Code action")
+    keymap("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", "󰟵 Rename")
+    keymap("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", " Line diagnostics")
+    keymap("n", "<leader>D", "<cmd>Lspsaga show_cursor_diagnostics<CR>", " Cursor diagnostics")
+    keymap("n", "[d", "<cmd>Lspsaga diagnostics_jump_prev<CR>", " Jump previous diagnostics")
+    keymap("n", "]d", "<cmd>Lspsaga diagnostics_jump_next<CR>", " Jump next diagnostics")
+    keymap("n", "<leader>o", "<cmd>Lspsaga hover_doc<CR>", "󰔢 LSP outline toggle")
+    keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", " Show documentation")
+
+    -- formatting
+    if client.server.capabilities.documentFormattingProvider then
+        vim.api.nvim_command([[augroup Format]])
+        vim.api.nvim_command([[autocmd! * <buffer>]])
+        vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]])
+        vim.api.nvim_command([[augroup END]])
+    end
+
+    -- client actions
+    if client.name == "tsserver" then
+        keymap("n", "<leader>rf", ":TypescriptRenameFile<CR>", "󰟵 Typescript rename file")
+    end
+end
+
+local lspconfig_status_ok, _ = pcall(require, "lspconfig")
+if not lspconfig_status_ok then
+  M.config = function() end
+  return M
+end
+
+M.config = function()
+  require("neodev").setup()
+
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    update_in_insert = true,
+  })
+
+  -- LSP servers -- 
+  require('lsp/servers/lua').setup()
+  require('lsp/servers/python').setup()
+  require('lsp/servers/kotlin').setup()
+end
+
+return M

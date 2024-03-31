@@ -1,4 +1,4 @@
-return {
+local M = {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -6,11 +6,13 @@ return {
     "nvim-telescope/telescope-file-browser.nvim",
   },
   config = function()
-    local telescope = require("telescope")
     local actions = require("telescope.actions")
     local fb_actions = require("telescope").extensions.file_browser.actions
 
-    telescope.setup({
+    pcall(require('telescope').load_extension, 'fzf')
+    pcall(require('telescope').load_extension, 'ui-select')
+
+    require("telescope").setup({
       defaults = {
         mappings = {
           n = {
@@ -40,7 +42,7 @@ return {
         }
       }
     })
-    pcall(require('telescope').load_extension, 'fzf')
-    pcall(require('telescope').load_extension, 'ui-select')
-  end,
+  end
 }
+
+return M

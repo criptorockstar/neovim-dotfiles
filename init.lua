@@ -1,4 +1,5 @@
 require("init")
 
--- ColorScheme:
-vim.cmd.colorscheme("visual_studio_code")
+-- Configurations --
+-- vscode_modern, visual_studio_code
+vim.cmd.colorscheme("vscode_modern")

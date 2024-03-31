@@ -1,89 +1,66 @@
-local opt = vim.opt
-
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})
-
-vim.diagnostic.config({
-	virtual_text = true,
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-	severity_sort = false,
-})
-
-vim.o.signcolumn = "yes:2"
-vim.lsp.diagnostic.enable = true
-
+local opt = vim.opt -- global opt variable
+-- explore more editor's options on: https://neovim.io/doc/user/options.html
 ----- globals -----
-opt.laststatus = 3
-opt.showmode = false
-
-opt.clipboard = "unnamedplus"
-opt.cursorline = true
-opt.conceallevel = 0
-vim.scriptencoding = "UTF-8"
-opt.showcmd = true
-opt.shell = "zsh"
-opt.backspace = "start,eol,indent"
-opt.path:append({ "**" })
-opt.wildignore:append({ "*/node_modules/*" })
-opt.formatoptions:append({ "r" })
-opt.winblend = 0
-opt.wildoptions = "pum"
-opt.pumblend = 5
-opt.background = "dark"
-
--- Indenting
--- opt.showtabline = 2
-opt.expandtab = true
-opt.shiftwidth = 2
-opt.smartindent = true
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.breakindent = true
-opt.ai = true
-opt.si = true
-opt.wrap = false
-
-opt.fillchars = { eob = " " }
-opt.ignorecase = true
-opt.smartcase = true
-opt.mouse = "a"
-
--- Numbers
-opt.number = true
-opt.relativenumber = true
-opt.numberwidth = 4
-opt.ruler = false
-opt.cmdheight = 1
-opt.scrolloff = 10
-opt.completeopt = "menuone,noinsert,noselect"
-
---opt.shortmess:append "sI"
-opt.signcolumn = "yes"
-opt.splitbelow = true
-opt.splitright = true
-opt.termguicolors = true
---opt.colorcolumn = '100'
-
-opt.timeoutlen = 400
-opt.undofile = true
-
+vim.lsp.diagnostic.enable = true -- enables LSP diagnostics
+opt.laststatus = 3 -- stores the last displayed status line content
+opt.showmode = false -- toggles showing whitespace characters 
+opt.formatoptions:append({ "r" }) -- includes "readonly" mode
+opt.clipboard = "unnamedplus" -- sets the clipboard mode
+opt.cursorline = true -- enables highlighting the current line
+opt.conceallevel = 0 -- hides special characters (0 is show all) 
+vim.scriptencoding = "UTF-8" -- set default encoding to UTF-8
+opt.backspace = "start,eol,indent" -- configures how backspace works
+opt.winblend = 0 -- enables transpacery (0 is disable)
+opt.pumblend = 5 -- enables pseudo-transparency for the popup-menu
+opt.background = "dark" -- sets the background colorscheme
+opt.completeopt = "menuone,noinsert,noselect" -- comma-separated list of options for Insert mode completion
+opt.termguicolors = true -- enables 24-bit RGB color
+opt.timeoutlen = 400 -- title of the window will be set to the value of 'titlestring'
+opt.scrolloff = 10 -- minimal number of screen lines to keep above and below the cursor
+opt.mouse = "a" -- enables mouse support 
+opt.mouseshape = "s:udsizing,m:no" -- change arrow over the status lines
+opt.bufhidden = "wipe" -- specifies what happens when a buffer is no longer displayed
+---- Command ----
+opt.shell = "zsh" -- specifies the default shell for commands
+opt.cmdheight = 1 -- number of screen lines to use for the command-line 
+opt.showcmd = true -- enables display of command characters
+opt.splitright = true -- commands listed below move the cursor to the firs non-blank of the line
+opt.splitbelow = true  -- splitting a window will put the new window below the current one.
+opt.shortmess:append("sI") -- helps to avoid all the hit-enter prompts caused by file messages
+---- Completion ----
+opt.wildoptions = "pum" -- sets options for wildcard completion behavior
+opt.wildignore:append({ "*/node_modules/*" }) -- excludes directories from wildcard completion
+---- Column ----
+vim.o.signcolumn = "yes:2" -- enables a column to display signs
+opt.fillchars = { eob = " " } -- characters to fill the statuslines see: https://neovim.io/doc/user/options.html#'fillchars'
+---- Search ----
+opt.ignorecase = true -- ignores case in search patterns
+opt.smartcase = true -- overrides the 'ignorecase' option if the search pattern contains upper case characters
+opt.path:append({ "**" }) -- adds patterns to search for files
+---- Indenting ----
+opt.expandtab = true -- enables spaces to tabs
+opt.shiftwidth = 2 -- sets the amount of spaces for tabs
+opt.smartindent = true -- set adaptative/smart ident
+opt.tabstop = 2 -- set tab behaviour to stop at desirable space amount
+opt.softtabstop = 2 -- number of spaces that a <Tab> counts for while performing editing operations
+opt.breakindent = true -- enable identing same amount of space as the beginning of that line
+opt.autoindent = true -- copy indent from current line when starting a new line
+opt.wrap = true -- changes how overflowing text is displayed
+---- Numbers ---- 
+opt.number = true -- print the line number in front of each line
+opt.relativenumber = true -- set relative line numbers
+opt.numberwidth = 4 -- minimal number of columns to use for the line number
+opt.ruler = false -- show the line and column number of the cursor position
 -- Search
-opt.incsearch = true
-opt.ignorecase = true
-opt.smartcase = true
-opt.hlsearch = false
-
+opt.incsearch = true -- highlight command search patterns
+opt.hlsearch = false -- determines the highlighting for all matches not under the cursor
 -- Behaviour
-opt.hidden = true
-opt.errorbells = false
-opt.swapfile = false
-opt.backup = false
-opt.encoding = "UTF-8"
-opt.fileencoding = "UTF-8"
+opt.undofile = true -- saves undo history to an undo file when writing a buffer to a file
+opt.errorbells = false -- ring the bell (beep or screen flash) for error messages
+opt.swapfile = false -- use a swapfile for the buffer
+opt.backup = false -- make a backup before overwriting a file
+-- UFO
+--vim.o.foldenable = true -- switch between showing all text unfolded and viewing the text with folds
+--vim.o.foldcolumn = "1" -- resize to accommodate multiple folds up to the selected level
+--vim.o.foldlevel = 99 -- sets the fold level see: https://neovim.io/doc/user/options.html#'foldlevel'
+--vim.o.foldlevelstart = 99 -- sets 'foldlevel' when starting to edit another buffer
