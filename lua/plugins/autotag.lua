@@ -6,14 +6,8 @@ local M = {
   }
 }
 
-local autotag_status_ok, autotags = pcall(require, "nvim-ts-autotag")
-if not autotag_status_ok then
-  M.config = true
-  return M
-end
-
 M.config = function()
-  autotag.setup({})
+  require("nvim-ts-autotag").setup({})
 end
 
 return M

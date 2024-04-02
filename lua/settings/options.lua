@@ -6,11 +6,19 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
 -- Current line number color
 vim.api.nvim_command("augroup CursorLineHighlight")
 vim.api.nvim_command("autocmd!")
 vim.api.nvim_command("autocmd BufWinEnter,BufReadPost * highlight CursorLineNr guifg=yellow")
 vim.api.nvim_command("augroup END")
+
+-- Barbar
+vim.api.nvim_command("augroup BufferColors")
+vim.api.nvim_command("autocmd!")
+vim.api.nvim_command("autocmd BufWinEnter,BufReadPost * highlight BufferInactive ctermfg=white")
+vim.api.nvim_command("augroup END")
+
 -- Diagnostic settings
 vim.diagnostic.config({
 	virtual_text = {
@@ -28,3 +36,19 @@ vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticS
 vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticSignHint" })
+
+-- Alpha buffers
+
+vim.api.nvim_create_augroup("alpha_on_empty", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+	pattern = "BDeletePre *",
+	group = "alpha_on_empty",
+	callback = function()
+		local bufnr = vim.api.nvim_get_current_buf()
+		local name = vim.api.nvim_buf_get_name(bufnr)
+
+		if name == "" then
+			vim.cmd([[:Alpha | bd#]])
+		end
+	end,
+})

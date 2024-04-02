@@ -38,8 +38,8 @@ local opts = {
 
 require("lazy").setup({
 	spec = {
-    { import = "themes" },
-    { import = "plugins" },
+		{ import = "theme" },
+		{ import = "plugins" },
 		{ import = "lsp" },
 	},
 }, opts)

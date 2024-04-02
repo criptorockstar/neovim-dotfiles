@@ -59,8 +59,3 @@ opt.undofile = true -- saves undo history to an undo file when writing a buffer 
 opt.errorbells = false -- ring the bell (beep or screen flash) for error messages
 opt.swapfile = false -- use a swapfile for the buffer
 opt.backup = false -- make a backup before overwriting a file
--- UFO
---vim.opt.foldenable = false -- switch between showing all text unfolded and viewing the text with folds
---vim.opt.foldcolumn = "1" -- resize to accommodate multiple folds up to the selected level
---vim.opt.foldlevel = 99 -- sets the fold level see: https://neovim.io/doc/user/options.html#'foldlevel'
---vim.opt.foldlevelstart = 99 -- sets 'foldlevel' when starting to edit another buffer
