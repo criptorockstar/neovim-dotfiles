@@ -39,6 +39,7 @@ local lsp_icons = {
 	Unit = "󰑭",
 	Value = "󰎠",
 	Variable = "󰈜",
+	Codeium = "",
 }
 
 M.config = function()
