@@ -1,9 +1,9 @@
 local M = {}
 
-M.setup = function()
-	local capabilities = require("lsp/lspconfig").capabilities
-	local on_attach = require("lsp/lspconfig").on_attach
+local capabilities = require("lsp/lspconfig").capabilities
+local on_attach = require("lsp/lspconfig").on_attach
 
+M.setup = function()
 	require("lspconfig").lua_ls.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,

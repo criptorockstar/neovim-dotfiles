@@ -12,17 +12,17 @@ M.config = function()
 	lint.linters_by_ft = {
 		lua = { "luacheck" },
 		python = { "flake8" },
-		javascript = { "prettier" },
-		typescript = { "prettier" },
-		javascriptreact = { "prettier" },
-		typescriptreact = { "prettier" },
-		svelte = { "prettier" },
-		css = { "prettier" },
-		html = { "prettier" },
-		json = { "prettier" },
-		yaml = { "prettier" },
-		markdown = { "prettier" },
-		graphql = { "prettier" },
+		javascript = { "eslint_d" },
+		typescript = { "eslint_d" },
+		javascriptreact = { "eslint_d" },
+		typescriptreact = { "eslint_d" },
+		svelte = { "eslint_d" },
+		css = { "eslint_d" },
+		html = { "eslint_d" },
+		json = { "eslint_d" },
+		yaml = { "eslint_d" },
+		markdown = { "eslint_d" },
+		graphql = { "eslint_d" },
 	}
 
 	local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

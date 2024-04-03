@@ -59,9 +59,13 @@ M.config = function()
 	})
 
 	-- LSP servers --
-	require("lsp/servers/lua").setup()
-	require("lsp/servers/python").setup()
 	require("lsp/servers/kotlin").setup()
+	require("lsp/servers/lua").setup()
+	require("lsp/servers/motoko").setup()
+	require("lsp/servers/python").setup()
+	require("lsp/servers/solidity").setup()
+	require("lsp/servers/sui").setup()
+	require("lsp/servers/typescript").setup()
 end
 
 return M

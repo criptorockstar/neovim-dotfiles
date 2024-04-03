@@ -57,6 +57,7 @@ M.config = function()
 			{ name = "greek" },
 			{ name = "luasnip", priority = 10, keyword_length = 1 },
 			{ name = "buffer", option = { keyword_pattern = [[\k\+]] }, keyword_length = 1 },
+			{ name = "codeium" },
 		},
 		enabled = function()
 			local in_prompt = vim.api.nvim_buf_get_option(0, "buftype") == "prompt"
