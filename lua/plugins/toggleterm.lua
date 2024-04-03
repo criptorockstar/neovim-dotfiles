@@ -4,32 +4,21 @@ local M = {
 	version = "*",
 }
 
-function set_nvimtree_when_open_term(terminal)
-	local nvimtree = require("nvim-tree")
-	local nvimtree_view = require("nvim-tree.view")
-	if nvimtree_view.is_visible() and terminal.direction == "horizontal" then
-		local nvimtree_width = vim.fn.winwidth(nvimtree_view.get_winnr())
-		nvimtree.toggle()
-		nvimtree_view.View.width = nvimtree_width
-		nvimtree.toggle(false, true)
-	end
-end
-
 M.config = function()
 	require("toggleterm").setup({
 		size = 8,
 		open_mapping = [[<c-\>]],
 		on_open = function(_)
-			-- check NvimTree is visible
-			local name = vim.fn.bufname("nvimtree")
+			local name = vim.fn.bufname("neo-tree")
 			local winnr = vim.fn.bufwinnr(name)
-			if winnr ~= -1 then
+			if winnr ~= 2 then
 				local pwd = vim.fn.getcwd()
 				vim.defer_fn(function()
-					local cmd = string.format("NvimTreeToggle %s ", pwd)
+					local cmd = string.format("Neotree toggle %s", pwd)
 					vim.cmd(cmd)
-					local cmd_retoggle = string.format("NvimTreeToggle  %s | 1 | wincmd p", pwd)
-					vim.cmd(cmd_retoggle)
+					vim.defer_fn(function()
+						vim.cmd("Neotree toggle")
+					end, 50)
 				end, 100)
 			end
 		end,
@@ -37,12 +26,12 @@ M.config = function()
 		shade_filetypes = { "none", "fzf" },
 		shade_terminals = true,
 		shading_factor = "1",
-		start_in_insert = true,
-		insert_mappings = false,
+		start_in_insert = false,
+		insert_mappings = true,
 		terminal_mappings = true,
 		persist_size = false,
-		direction = "horizontal",
 		close_on_exit = true,
+		direction = "horizontal",
 		shell = vim.o.shell,
 		float_opts = {
 			border = "single",
@@ -59,7 +48,7 @@ M.config = function()
 	})
 
 	function _G.set_terminal_keymaps()
-		local opts = { buffer = 0 }
+		local opts = { buffer = true }
 		vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
 		vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
 		vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
@@ -68,6 +57,9 @@ M.config = function()
 		vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
 		vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
 	end
+
+	-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+	vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 end
 
 return M

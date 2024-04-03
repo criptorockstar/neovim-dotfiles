@@ -35,7 +35,7 @@ map("n", "<C-d>", "<C-d>zz", options(" Scroll down"))
 map("n", "<C-u>", "<C-u>zz", options(" Scroll up"))
 
 -- NvimTree
-map("n", "<C-b>", ":NvimTreeToggle<CR>", options("󰔱 Toggle nvimtree"))
+map("n", "<C-b>", ":Neotree toggle<CR>", options("󰔱 Toggle nvimtree"))
 
 -- Move Window
 map("n", "<Space>", "<C-w>w", options("󰆾 Move"))

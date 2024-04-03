@@ -1,4 +1,5 @@
 require("init")
 
--- ColorScheme --
-vim.cmd.colorscheme("visual_studio_code")
+-- ColorScheme -- visual_studio_code, catppuccin-mocha, darkplus, vscode, monokai-nightasty
+-- eldritch
+vim.cmd.colorscheme("catppuccin-mocha")
