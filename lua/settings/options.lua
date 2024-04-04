@@ -16,8 +16,7 @@ vim.api.nvim_command("augroup END")
 -- Barbar
 vim.api.nvim_command("augroup BufferColors")
 vim.api.nvim_command("autocmd!")
-vim.api.nvim_command("autocmd BufWinEnter,BufReadPost * highlight BufferInactive guifg=white")
-vim.api.nvim_command("autocmd BufWinEnter,BufReadPost * highlight BufferCurrent guifg=white")
+vim.api.nvim_command("autocmd BufWinEnter,BufReadPost * highlight BufferInactive guifg=grey")
 vim.api.nvim_command("augroup END")
 
 -- Diagnostic settings

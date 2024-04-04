@@ -23,6 +23,7 @@ M.config = function()
 		yaml = { "eslint_d" },
 		markdown = { "eslint_d" },
 		graphql = { "eslint_d" },
+		solidity = { "solhint" },
 	}
 
 	local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

@@ -22,6 +22,7 @@ M.config = function()
 			lua = { "stylua" },
 			python = { "isort", "black" },
 			ruby = { "standardrb" },
+			solidity = { "prettier" },
 		},
 		format_on_save = {
 			lsp_fallback = true,

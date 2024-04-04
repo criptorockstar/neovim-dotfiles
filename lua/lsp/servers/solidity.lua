@@ -23,6 +23,17 @@ M.setup = function()
 			filetypes = { "solidity" },
 			root_dir = util.root_pattern(unpack(root_files)) or util.root_pattern(".git", "package.json"),
 			single_file_support = true,
+			settings = {
+				-- Configura la indentación a 4 espacios
+				solidity = {
+					settings = {
+						-- Configura la indentación a 4 espacios
+						editor = {
+							tabSize = 4,
+						},
+					},
+				},
+			},
 		},
 		docs = {
 			description = [[

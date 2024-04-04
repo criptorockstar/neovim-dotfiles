@@ -29,6 +29,16 @@ M.config = function()
 				expander_highlight = "NeoTreeExpander",
 			},
 		},
+		filesystem = {
+			filtered_items = {
+				always_show = { -- remains visible even if other settings would normally hide it
+					".gitignore",
+					".env.example",
+					".prettierrc.json",
+					".prettierrc.js",
+				},
+			},
+		},
 		window = {
 			position = "left",
 			width = 33,
