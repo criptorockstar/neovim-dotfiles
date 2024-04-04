@@ -27,6 +27,7 @@ M.config = function()
 
 	-- set linter settings --
 	local eslint = lint.linters.eslint_d
+
 	eslint.args = {
 		"--no-warn-ignored",
 		"--format",
