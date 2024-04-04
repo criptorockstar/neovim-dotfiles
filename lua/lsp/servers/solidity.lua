@@ -28,9 +28,6 @@ M.setup = function()
 				solidity = {
 					settings = {
 						-- Configura la indentación a 4 espacios
-						editor = {
-							tabSize = 4,
-						},
 					},
 				},
 			},

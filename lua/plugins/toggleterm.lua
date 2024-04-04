@@ -1,3 +1,4 @@
+---@diagnostic disable: param-type-mismatch
 local M = {
 	"akinsho/toggleterm.nvim",
 	event = "VeryLazy",
@@ -6,6 +7,7 @@ local M = {
 
 M.config = function()
 	require("toggleterm").setup({
+		count = 1,
 		size = 8,
 		open_mapping = [[<c-\>]],
 		on_open = function(_)
@@ -60,6 +62,16 @@ M.config = function()
 
 	-- if you only want these mappings for toggle term use term://*toggleterm#* instead
 	vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
+	-- split
+	local Terminal = require("toggleterm.terminal").Terminal
+	local vterm = Terminal:new({
+		count = 2,
+	})
+	function vterm_toggle()
+		vterm:toggle()
+	end
+	vim.api.nvim_set_keymap("n", "<C-n>", "<cmd>lua vterm_toggle()<CR>", { noremap = true, silent = true })
 end
 
 return M

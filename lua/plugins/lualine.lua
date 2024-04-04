@@ -4,7 +4,7 @@ local M = {
 }
 
 M.config = function()
-	local theme = require("lualine.themes.codedark")
+	local theme = require("lualine.themes.catppuccin-mocha")
 
 	theme.normal.c.bg = nil
 

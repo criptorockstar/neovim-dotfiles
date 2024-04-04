@@ -16,7 +16,7 @@ map("n", "p", "p`[v`]=", options("󰆒 Paste"))
 
 map("n", "x", "x", options("󰆐 Cut"))
 map("n", "u", "<CMD>u<CR>", options("󰕌 Undo"))
-map({ "n", "v", "i" }, "<C-z>", "<CMD>u<CR>", options("󰕌 Undo"))
+map({ "n", "v", "i" }, "<C-z>", "<CMD><CR>", options("󰕌 Undo"))
 map("n", "<C-r>", "<CMD>redo<CR>", options("󰑎 Redo"))
 
 map("n", "<C-a>", "gg0vG", options(" Select all"))

@@ -21,9 +21,21 @@ M.config = function()
 		html = { "eslint_d" },
 		json = { "eslint_d" },
 		yaml = { "eslint_d" },
-		markdown = { "eslint_d" },
 		graphql = { "eslint_d" },
 		solidity = { "solhint" },
+	}
+
+	-- set linter settings --
+	local eslint = lint.linters.eslint_d
+	eslint.args = {
+		"--no-warn-ignored",
+		"--format",
+		"json",
+		"--stdin",
+		"--stdin-filename",
+		function()
+			return vim.api.nvim_buf_get_name(0)
+		end,
 	}
 
 	local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
