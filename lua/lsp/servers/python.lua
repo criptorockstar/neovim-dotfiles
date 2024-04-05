@@ -63,6 +63,7 @@ M.setup = function()
 					reportPrivateImportUsage = false,
 					reportOptionalMemberAccess = false,
 					reportArgumentType = false,
+					exclude = { "**/__init__.py" },
 				},
 				python = {
 					analysis = {

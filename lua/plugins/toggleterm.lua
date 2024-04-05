@@ -61,7 +61,7 @@ M.config = function()
 	end
 
 	-- if you only want these mappings for toggle term use term://*toggleterm#* instead
-	vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+	vim.cmd("autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()")
 
 	-- split
 	local Terminal = require("toggleterm.terminal").Terminal
@@ -71,7 +71,7 @@ M.config = function()
 	function vterm_toggle()
 		vterm:toggle()
 	end
-	vim.api.nvim_set_keymap("n", "<C-n>", "<cmd>lua vterm_toggle()<CR>", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("n", "<C-z>", "<cmd>lua vterm_toggle()<CR>", { noremap = true, silent = true })
 end
 
 return M

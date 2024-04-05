@@ -16,7 +16,7 @@ map("n", "p", "p`[v`]=", options("󰆒 Paste"))
 
 map("n", "x", "x", options("󰆐 Cut"))
 map("n", "u", "<CMD>u<CR>", options("󰕌 Undo"))
-map({ "n", "v", "i" }, "<C-z>", "<CMD><CR>", options("󰕌 Undo"))
+map({ "v", "i" }, "<C-z>", "<CMD>u<CR>", options("󰕌 Undo"))
 map("n", "<C-r>", "<CMD>redo<CR>", options("󰑎 Redo"))
 
 map("n", "<C-a>", "gg0vG", options(" Select all"))
@@ -65,7 +65,12 @@ map("n", "<leader>fk", "<cmd>Telescope help_tags<cr>", options("󰋗 Help tags")
 
 -- Comment
 map("n", "<A-/>", ':execute "normal gcc"<CR>', options("  Toggle comment"))
-map("x", "<A-/>", ':<C-u>execute "normal gv"<bar>execute "normal gcc"<CR>', options("  Toggle comment (visual)"))
+map(
+	"x",
+	"<A-/>",
+	':<C-u>execute "normal gv"<bar>execute "normal gcc"<CR>',
+	options("  Toggle comment (visual mode)")
+)
 
 -- Tabs
 map("n", "<Tab>", "<cmd>BufferNext<CR>", options(" Next Tab"))
