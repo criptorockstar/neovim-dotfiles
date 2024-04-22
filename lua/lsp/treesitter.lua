@@ -86,10 +86,52 @@ M.opts = {
 			keymaps = {
 				["af"] = "@function.outer",
 				["if"] = "@function.inner",
-				["ac"] = "@conditional.outer",
-				["ic"] = "@conditional.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+				["aa"] = "@parameter.outer",
+				["ai"] = "@parameter.inner",
+				["ia"] = "@conditional.outer",
+				["ii"] = "conditional.inner",
 				["al"] = "@loop.outer",
 				["il"] = "@loop.inner",
+				["at"] = "@comment.outer",
+				["it"] = "@comment.inner",
+			},
+		},
+		move = {
+			enable = true,
+			set_jumps = true,
+			go_to_next_start = {
+				["]m"] = "@function.outer",
+				["]]"] = "@class.outer",
+				["]o"] = "@loop.*",
+			},
+			goto_next_end = {
+				["]M"] = "@function.outer",
+				["]["] = "@class.outer",
+			},
+			goto_previous_start = {
+				["[m"] = "@function.outer",
+				["[["] = "@class.outer",
+			},
+			goto_previous_end = {
+				["[M"] = "@function.outer",
+				["[]"] = "@class.outer",
+			},
+			goto_next = {
+				["]i"] = "@conditional.inner",
+			},
+			goto_previous = {
+				["[i"] = "@conditional.inner",
+			},
+		},
+		swap = {
+			enable = true,
+			swap_next = {
+				["<leader>a"] = "@parameter.inner",
+			},
+			swap_previous = {
+				["<leader>A"] = "@parameter.inner",
 			},
 		},
 	},

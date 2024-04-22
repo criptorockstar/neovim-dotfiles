@@ -32,11 +32,16 @@ opt.wildoptions = "pum" -- sets options for wildcard completion behavior
 opt.wildignore:append({ "*/node_modules/*" }) -- excludes directories from wildcard completion
 ---- Column ----
 vim.o.signcolumn = "yes:2" -- enables a column to display signs
-opt.fillchars = { eob = " " } -- characters to fill the statuslines see: https://neovim.io/doc/user/options.html#'fillchars'
+opt.fillchars = { eob = " " } -- characters to fill the statuslines
+--see: https://neovim.io/doc/user/options.html#'fillchars'
 ---- Search ----
 opt.ignorecase = true -- ignores case in search patterns
 opt.smartcase = true -- overrides the 'ignorecase' option if the search pattern contains upper case characters
 opt.path:append({ "**" }) -- adds patterns to search for files
+opt.incsearch = true -- highlight command search patterns
+opt.hlsearch = false -- determines the highlighting for all matches not under the cursor
+---- Syntax ----
+--syntax = dosini
 ---- Indenting ----
 opt.expandtab = true -- enables spaces to tabs
 opt.shiftwidth = 2 -- sets the amount of spaces for tabs
@@ -51,9 +56,6 @@ opt.number = true -- print the line number in front of each line
 opt.relativenumber = true -- set relative line numbers
 opt.numberwidth = 4 -- minimal number of columns to use for the line number
 opt.ruler = false -- show the line and column number of the cursor position
--- Search
-opt.incsearch = true -- highlight command search patterns
-opt.hlsearch = false -- determines the highlighting for all matches not under the cursor
 -- Behaviour
 opt.undofile = true -- saves undo history to an undo file when writing a buffer to a file
 opt.errorbells = false -- ring the bell (beep or screen flash) for error messages

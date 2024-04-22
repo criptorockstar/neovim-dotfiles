@@ -11,7 +11,7 @@ M.config = function()
 
 	lint.linters_by_ft = {
 		lua = { "luacheck" },
-		python = { "mypy", "flake8" },
+		python = { "flake8" },
 		javascript = { "eslint_d" },
 		typescript = { "eslint_d" },
 		javascriptreact = { "eslint_d" },

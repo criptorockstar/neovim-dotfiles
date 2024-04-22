@@ -12,7 +12,7 @@ M.config = function()
 		options = {
 			icons_enabled = true,
 			theme = theme,
-			globalstatus = true,
+			globalstatus = false,
 			disabled_filetypes = {},
 		},
 		sections = {
@@ -29,7 +29,7 @@ M.config = function()
 				{
 					"diagnostics",
 					sources = { "nvim_diagnostic" },
-					symbols = { error = " ", warn = " ", info = " ", hint = " " },
+          symbols = { error = " ", warn = " ", info = " ", hint = "󰌶 " },
 				},
 				"encoding",
 				"filetype",
@@ -44,7 +44,7 @@ M.config = function()
 				{
 					"filename",
 					file_status = true,
-					path = 1, -- 1 = relative path
+					path = 1,
 				},
 			},
 			lualine_x = { "location" },

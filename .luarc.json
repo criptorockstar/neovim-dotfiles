@@ -1,4 +1,3 @@
 {
-  "diagnostics.globals": ["vim",
-        "vterm_toggle"]
+  "diagnostics.globals": ["vim", "vterm_toggle"]
 }

@@ -32,7 +32,33 @@ vim.diagnostic.config({
 })
 
 -- Diagnostic signs
-vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticSignHint" })
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "󰌶 ", texthl = "DiagnosticSignHint" })
+
+-- Set Icons
+vim.api.nvim_call_function(
+	"sign_define",
+	{ "DapBreakpoint", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" } }
+)
+
+vim.api.nvim_call_function(
+	"sign_define",
+	{ "DapBreakpointCondition", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" } }
+)
+
+vim.api.nvim_call_function(
+	"sign_define",
+	{ "DapLogPoint", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" } }
+)
+
+vim.api.nvim_call_function(
+	"sign_define",
+	{ "DapStopped", { linehl = "GitSignsChangeVirtLn", text = "", texthl = "diffChanged", numhl = "" } }
+)
+
+vim.api.nvim_call_function(
+	"sign_define",
+	{ "DapBreakpointRejected", { linehl = "", text = "", texthl = "", numhl = "" } }
+)

@@ -45,7 +45,7 @@ M.config = function()
 			"solidity_ls_nomicfoundation",
 			"yamlls",
 		},
-		automatic_installation = true,
+		automatic_installation = false,
 	})
 end
 

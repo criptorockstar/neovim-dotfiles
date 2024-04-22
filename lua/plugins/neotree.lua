@@ -39,22 +39,13 @@ M.config = function()
 					".prettierrc",
 					".solhint.json",
 					".solhintignore",
+          "*.pkl",
 				},
 			},
 		},
 		window = {
 			position = "left",
-			width = 33,
-		},
-		event_handlers = {
-			{
-				event = "neo_tree_popup_input_ready",
-				---@param args { bufnr: integer, winid: integer }
-				handler = function(args)
-					vim.cmd("stopinsert")
-					vim.keymap.set("i", "<esc>", vim.cmd.stopinsert, { noremap = true, buffer = args.bufnr })
-				end,
-			},
+			width = 30,
 		},
 	})
 end
