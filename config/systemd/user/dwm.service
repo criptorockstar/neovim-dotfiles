@@ -1,0 +1,12 @@
+[Unit]
+Description=Dinamic window manager
+After=xorg.target
+Requires=xorg.target
+
+[Service]
+ExecStart=/usr/bin/dwm
+Restart=always
+RestartSec=10
+ 
+[Install]
+WantedBy=wm.target

@@ -1,0 +1,26 @@
+configuration {
+  modi: "run";
+  lines: 2;
+  width: 20;
+  location: 0;
+  font: "Sarasa Nerd Font 14";
+  show-icons: true;
+  icon-theme: "Oranchelo";
+  terminal: "st";
+  drun-display-format: "{icon} {name}";
+  sidebar-mode: false;
+  display-run: "   calc ";
+  display-drun: "   Apps ";
+  display-window: " 﩯  window";
+}
+
+window {
+  height: 150;
+  width: 500;
+}
+
+inputbar {
+    children: [prompt,entry];
+    border-radius: 5px;
+    padding: 2px;
+}

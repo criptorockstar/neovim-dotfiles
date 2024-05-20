@@ -1,0 +1,57 @@
+/**
+ * ROFI Color theme
+ * User: Qball
+ * Copyright: Dave Davenport
+ */
+configuration{
+    modi: "drun";
+    lines: 5;
+    font: "Sarasa Nerd Font 14";
+    show-icons: true;
+    icon-theme: "cyberpunk-technotronic-icon-theme";
+    terminal: "st";
+    location: 0;
+    disable-history: true;
+    hide-scrollbar: true;
+    display-drun: "  ";
+}
+
+* {
+    background-color:      Black;
+    border-color:          White;
+    text-color:            White;
+    font:                  "Sarasa Nerd Font 14";
+    terminal: "st";
+}
+
+#window {
+    anchor:     south west;
+    location:   south west;
+    width:      100%;
+    padding:    4px;
+    children:   [ horibox ];
+}
+
+#horibox {
+    orientation: horizontal;
+    children:   [ prompt, entry, listview ];
+}
+
+#listview {
+    layout:     horizontal;
+    spacing:    5px;
+    lines:      90;
+}
+
+#entry {
+    expand:     false;
+    width:      10em;
+}
+
+#element {
+    padding: 0px 2px;
+}
+
+#element selected {
+    background-color: SteelBlue;
+}

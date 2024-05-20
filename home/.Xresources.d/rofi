@@ -1,0 +1,24 @@
+! Rofi !
+
+#define rofi_bg         argb:c82d303b
+#define rofi_fg         #c4cbd4 
+#define rofi_active     c04
+
+
+! Colors
+rofi.color-window: rofi_bg, rofi_bg
+rofi.color-normal: argb:00000000, rofi_fg, argb:00000000, argb:00000000, rofi_active
+rofi.color-urgent: argb:00000000, rofi_fg, argb:00000000, argb:00000000, rofi_active
+rofi.color-active: argb:00000000, rofi_fg, argb:00000000, argb:00000000, rofi_active
+
+
+! Other
+rofi.width: 100
+rofi.lines: 3
+rofi.columns: 1
+rofi.font: System San Francisco 18
+rofi.bw: 0
+rofi.padding: 800
+rofi.eh: 2
+rofi.separator-style: none 
+rofi.hide-scrollbar: true

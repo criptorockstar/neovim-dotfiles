@@ -1,0 +1,13 @@
+[Unit]
+Description=MPD Notification Service (with delay)
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=/bin/sleep 5
+ExecStart=/ruta/a/tu/comando/mpd-notification
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+

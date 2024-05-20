@@ -1,0 +1,20 @@
+! INCLUDE THEME !
+#include ".Xresources.d/themes/base16-one-dark"
+
+! INCLUDE POLYBAR !
+#include ".Xresources.d/polybar"
+
+! INCLUDE ST !
+#include ".Xresources.d/st"
+
+! INCLUDE DWM !
+#include ".Xresources.d/dwm"
+
+! INCLUDE DUNST !
+#include ".Xresources.d/dunst"
+
+! INCLUDE EMACS !
+#include ".Xresources.d/emacs"
+
+! INCLUDE i3LOCK !
+#include ".Xresources.d/i3lock"
